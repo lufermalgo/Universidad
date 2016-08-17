@@ -1,11 +1,12 @@
 
-
+// Este SubProceso perimite hacer el llenado del vector
 SubProceso definirVector(A,N) 
 	Para i<-1 Hasta N Con Paso 1 Hacer
 		leer A[i];
 	FinPara
 FinSubProceso
 
+// Este SubProceso imprime el vector resultante en pantalla
 SubProceso imprimirVector(A,N)
 	Escribir "";
 	escribir Sin Saltar "El vector resultante es: ";
@@ -15,6 +16,7 @@ SubProceso imprimirVector(A,N)
 	FinPara
 FinSubProceso
 
+// Este SubProceso hace la busqueda del numero en cuestión
 SubProceso P<-buscarNumero(A,N)
 	match<-25;
 	Para i<-1 Hasta N Con Paso 1 Hacer
@@ -24,6 +26,7 @@ SubProceso P<-buscarNumero(A,N)
 	FinPara
 FinSubProceso
 
+// Este SubProceso imprime el resultado
 SubProceso escribriResultado(P)
 	si P <> 0 entonces
 		Escribir "";
