@@ -1,10 +1,9 @@
 // Se procede a ordernar el vector con la tecnica de Quicksort
-SubProceso ordenarQuicksort(A,N,centro)
+SubProceso ordenarQuicksort(A,N)
 	i <- 1;
 	j <- N;
-	pivote <- centro;
-	
-	Mientras i < j Hacer
+	pivote <- redon(N / 2);
+	Mientras i > j Hacer
 		Mientras A[i] < pivote Hacer
 			i <- i + 1;
 		FinMientras
@@ -21,9 +20,24 @@ SubProceso ordenarQuicksort(A,N,centro)
 	FinMientras
 FinSubProceso
 
-// identificamos el centro de la matiz.
-SubProceso centro<-calcularCentro(N)
-	centro <- redon(N / 2);
+SubProceso busquedaBinaria(A,N)
+	k <- 25;
+	bajo<-1;
+	alto<-N;
+	centro<-redon((bajo + alto )/2);
+	Mientras (bajo <= alto) y (A(centro) <> k) Hacer
+		Si k < A(centro) Entonces
+			alto <- centro - 1
+		Sino
+			bajo <- centro + 1
+		Fin Si
+		centro<-redon((bajo + alto )/2)
+	Fin Mientras
+	Si k = A(centro) Entonces
+		escribir sin saltar "valor encontrado en la posición: ", centro
+	Sino
+		escribir "*** ERROR *** valor no encontrado"
+	Fin Si
 FinSubProceso
 
 // Este SubProceso perimite hacer el llenado del vector
@@ -43,38 +57,14 @@ SubProceso imprimirVector(A,N)
 	FinPara
 FinSubProceso
 
-// Este SubProceso hace la busqueda del numero en cuestión
-SubProceso posicion<-buscarNumero(A,N)
-	match<-25;
-	Para i<-1 Hasta N Con Paso 1 Hacer
-		Si A[i] = match 	Entonces
-			posicion<-i;
-		FinSi
-	FinPara
-FinSubProceso
-
-// Este SubProceso imprime el resultado
-SubProceso escribriResultado(posicion)
-	Si posicion <> 0 entonces
-		Escribir "";
-		Escribir "Se encontro el número 25 en la posición: ",posicion;
-	Sino
-		Escribir "";
-		Escribir "No se encontro el número 25 en ninguna posición";
-	FinSi
-FinSubProceso
-
 Algoritmo EncuentraEl25
-	Definir A,N,P Como Entero;
+	Definir A,N,k,pivote,centro Como Entero;
 	Escribir Sin Saltar "Cual es la longitud del vector? ";
 	leer N;
 	Dimension A[N];
-	escribir posicion;
 	Escribir "Ingrese los ", N " números que desea en el vector";
 	definirVector(A,N);
-	centro<-calcularCentro(N);
-	ordenarQuicksort(A,N,centro);
+	ordenarQuicksort(A,N);
 	imprimirVector(A,N);
-	posicion<-buscarNumero(A,N);
-	escribriResultado(posicion);
+	busquedaBinaria(A,N);
 FinAlgoritmo
