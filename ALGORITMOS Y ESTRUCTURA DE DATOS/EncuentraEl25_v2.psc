@@ -1,23 +1,32 @@
 // Se procede a ordernar el vector con la tecnica de Quicksort
-SubProceso ordenarQuicksort(A,N)
-	i <- 1;
+SubProceso ordenarQuicksort(A,M,N)
+	i <- M;
 	j <- N;
-	pivote <- redon(N / 2);
-	Mientras i > j Hacer
-		Mientras A[i] < pivote Hacer
-			i <- i + 1;
+	pivote <- redon((i + j) / 2);
+		Mientras i < j Hacer
+			Mientras A[j] > A[pivote] Hacer
+				j <- j - 1;
+			FinMientras
+			Mientras A[i] < A[pivote] Hacer
+				i <- i + 1;
+			FinMientras
+			Si i <= j Entonces
+				x <- A[j];
+				A[j] <- A[i];
+				A[i] <- x
+				i <- i + 1;
+				j <- j - 1;
+			FinSi
 		FinMientras
-		Mientras A[j] > pivote Hacer
-			j <- j - 1;
+		Mientras ( i <= j) Hacer
+			Si (M < j) Entonces
+				ordenarQuicksort(A,M,j)
+			FinSi
+			Si (i<N) Entonces
+				ordenarQuicksort(A,i,N)
+			FinSi
 		FinMientras
-		Si i <= j Entonces
-			x <- A[j];
-			A[j] <- A[i];
-			A[i] <- x
-			i <- i + 1;
-			j <- j - 1;
-		FinSi
-	FinMientras
+
 FinSubProceso
 
 SubProceso busquedaBinaria(A,N)
@@ -64,7 +73,8 @@ Algoritmo EncuentraEl25
 	Dimension A[N];
 	Escribir "Ingrese los ", N " números que desea en el vector";
 	definirVector(A,N);
-	ordenarQuicksort(A,N);
+	M<-1;
+	ordenarQuicksort(A,M,N);
 	imprimirVector(A,N);
-	busquedaBinaria(A,N);
+	//busquedaBinaria(A,N);
 FinAlgoritmo
