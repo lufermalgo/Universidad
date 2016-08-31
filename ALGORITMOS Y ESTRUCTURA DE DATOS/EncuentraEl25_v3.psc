@@ -1,4 +1,24 @@
+//		ACTIVIDAD: Trabajo unidad 2
+//		3. Elabore un programa en PseInt que lea una lista (n) de números naturales desde el 
+//		teclado y se desea saber si entre esos números se encuentra el número 25. Si el número 
+//		es encontrado visualizar su posición en la lista. Desarrollar el programa por búsqueda 
+//		secuencial y por búsqueda binaria.
+//
+//		Descripcion:
+//		Algoritmo que crea un vector de entrada manual de (n) elementos, realiza ordenamiento de dicho
+//		vector con el método QuickSort, una vez el vector este ordenado procede a buscar el número 25
+//		con el método de búsqueda binaria, finalmente se imprimer el resultado informando en que posición
+//		del vector esta ubicado dicho número.
+//
+//		Fecha:30-08-2016
+//		Actividad: Trabajo unidad 2
+//		Autor: Luis Fernando Maldonado Arango
+//		Materia: Algoritmos y estructuras de datos 1
+//		Profesor: John Jaime Orozco Arias
+//		Católica del Norte. Fundación Universitaria
+
 // Se procede a ordernar el vector con la tecnica de Quicksort
+// este es el método más eficiente y de menos lineas que se puede utlizar.
 SubProceso ordenarQuicksort(A,izq,der)
 	i <- izq;
 	j <- der;
@@ -26,6 +46,7 @@ SubProceso ordenarQuicksort(A,izq,der)
 	FinSi
 FinSubProceso
 
+// Esta función realiza la busqueda del número 25 con el método busqueda binaria.
 SubProceso busquedaBinaria(A,izq,der)
 	k <- 25;
 	i<-izq;
